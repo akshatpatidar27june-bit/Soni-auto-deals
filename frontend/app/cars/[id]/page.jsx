@@ -14,33 +14,50 @@ export default async function CarDetailsPage({ params }) {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
   return (
-    <main className="details-page">
-      <section className="section">
-        <div className="container">
-          <Link className="back-link" href="/cars">← Back to available cars</Link>
-          <div className="details-grid">
-            <div className="details-photo-wrap">
-              <img className="details-photo" src={car.image} alt={car.name} />
-            </div>
-            <div className="details-content">
-              <p className="eyebrow muted">Available in Mandsaur</p>
-              <h1>{car.name}</h1>
-              <div className="details-price">{car.price}</div>
-              <div className="spec-grid">
-                <div><span>Year</span><strong>{car.year}</strong></div>
-                <div><span>Kilometres</span><strong>{car.km}</strong></div>
-                <div><span>Fuel</span><strong>{car.fuel}</strong></div>
-                <div><span>Transmission</span><strong>{car.transmission}</strong></div>
+    <>
+      <header className="site-header">
+        <div className="container nav">
+          <Link href="/" className="brand">Soni Auto Deals</Link>
+          <nav className="nav-links" aria-label="Main navigation">
+            <Link href="/">Home</Link>
+            <Link href="/cars">Available Cars</Link>
+            <Link href="/#about">About Us</Link>
+            <Link href="/#contact">Contact</Link>
+          </nav>
+          <a className="wa-btn" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+      </header>
+
+      <main className="details-page">
+        <section className="section">
+          <div className="container">
+            <Link className="back-link" href="/cars">← Back to available cars</Link>
+            <div className="details-grid">
+              <div className="details-photo-wrap">
+                <img className="details-photo" src={car.image} alt={car.name} />
               </div>
-              <p className="details-description">{car.description}</p>
-              <div className="detail-actions">
-                <Link className="primary-btn dark" href={`/enquiry?car=${encodeURIComponent(car.name)}`}>Enquire Now</Link>
-                <a className="wa-btn" href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp</a>
+              <div className="details-content">
+                <p className="eyebrow muted">Available in Mandsaur</p>
+                <h1>{car.name}</h1>
+                <div className="details-price">{car.price}</div>
+                <div className="spec-grid">
+                  <div><span>Year</span><strong>{car.year}</strong></div>
+                  <div><span>Kilometres</span><strong>{car.km}</strong></div>
+                  <div><span>Fuel</span><strong>{car.fuel}</strong></div>
+                  <div><span>Transmission</span><strong>{car.transmission}</strong></div>
+                </div>
+                <p className="details-description">{car.description}</p>
+                <div className="detail-actions">
+                  <Link className="primary-btn dark" href={`/enquiry?car=${encodeURIComponent(car.name)}`}>Enquire Now</Link>
+                  <a className="wa-btn" href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+
+      <footer className="site-footer"><div className="container"><span>© {new Date().getFullYear()} Soni Auto Deals</span><span>Mandsaur, Madhya Pradesh</span></div></footer>
+    </>
   );
 }
